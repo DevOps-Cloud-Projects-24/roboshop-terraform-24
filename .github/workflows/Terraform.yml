@@ -1,0 +1,8 @@
+name: infra creation
+on: [push, workflow_dispatch]
+jobs:
+  provision:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@4
+    - run: terraform init
