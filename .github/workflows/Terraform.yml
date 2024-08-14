@@ -12,6 +12,7 @@ jobs:
 
      DEV-APPLY:
        runs-on: self-hosted
+       needs: DEV-PLAN
        #environment: dev
        #needs: DEV-PLAN
        steps:
@@ -23,7 +24,7 @@ jobs:
 
      QA:
         runs-on: ubuntu-latest
-        needs: DEV
+        needs: DEV-APPLY
         steps:
           - run: echo just a dummy pint
 
