@@ -13,7 +13,7 @@ jobs:
      DEV-APPLY:
        runs-on: self-hosted
 #       environment: DEV
-       needs: DEV-PLAN
+#       needs: DEV-PLAN
        #environment: dev
        #needs: DEV-PLAN
        steps:
