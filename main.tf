@@ -7,6 +7,6 @@ module "vpc" {
   app_subnet = var.vpc["app_subnet"]
   web_subnet = var.vpc["web_subnet"]
   db_subnet = var.vpc["db_subnet"]
-  availability_zones = var.vpc["availability_zonesm"]
+  availability_zones = var.vpc["availability_zones"]
 
 }
