@@ -74,7 +74,7 @@ resource "aws_route_table" "web" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_nat_gateway.main.*.id[count.index]
+    nat_gateway_id = aws_nat_gateway.main.*.id[count.index]
   }
 
   tags = {
@@ -88,7 +88,7 @@ resource "aws_route_table" "app" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_nat_gateway.main.*.id[count.index]
+    nat_gateway_id = aws_nat_gateway.main.*.id[count.index]
   }
 
   tags = {
@@ -102,7 +102,7 @@ resource "aws_route_table" "db" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_nat_gateway.main.*.id[count.index]
+    nat_gateway_id = aws_nat_gateway.main.*.id[count.index]
   }
 
   tags = {
