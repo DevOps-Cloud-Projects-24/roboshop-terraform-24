@@ -8,5 +8,8 @@ module "vpc" {
   web_subnet = var.vpc["web_subnet"]
   db_subnet = var.vpc["db_subnet"]
   availability_zones = var.vpc["availability_zones"]
+  default_vpc_id     = var.vpc["default_vpc_id"]
+  default_vpc_rt     = var.vpc["default_vpc_rt"]
+  default_vpc_cidr   = var.vpc["default_vpc_cidr"]
 
 }

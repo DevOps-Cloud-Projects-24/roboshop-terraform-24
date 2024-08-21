@@ -7,6 +7,14 @@ resource "aws_vpc" "main" {
   }
 }
 
+## peering
+
+resource "aws_vpc_peering_connection" "main" {
+  peer_vpc_id   = aws_vpc.main.id
+  vpc_id        = var.default_vpc_id
+  auto_accept = true
+}
+
 ## AWS Subnet
 resource "aws_subnet" "web" {
   count      = length(var.web_subnet)
@@ -63,6 +71,11 @@ resource "aws_route_table" "public" {
     gateway_id = aws_internet_gateway.main.id
   }
 
+  route {
+    cidr_block = var.default_vpc_cidr
+    gateway_id = aws_internet_gateway.main.id
+  }
+
   tags = {
     Name = "public-rt-${split("-", var.availability_zones[count.index])[2]}"
   }
@@ -75,6 +88,11 @@ resource "aws_route_table" "web" {
   route {
     cidr_block = "0.0.0.0/0"
     nat_gateway_id = aws_nat_gateway.main.*.id[count.index]
+  }
+
+  route {
+    cidr_block = var.default_vpc_cidr
+    gateway_id = aws_internet_gateway.main.id
   }
 
   tags = {
@@ -91,6 +109,11 @@ resource "aws_route_table" "app" {
     nat_gateway_id = aws_nat_gateway.main.*.id[count.index]
   }
 
+  route {
+    cidr_block = var.default_vpc_cidr
+    gateway_id = aws_internet_gateway.main.id
+  }
+
   tags = {
     Name = "app-rt-${split("-", var.availability_zones[count.index])[2]}"
   }
@@ -103,6 +126,11 @@ resource "aws_route_table" "db" {
   route {
     cidr_block = "0.0.0.0/0"
     nat_gateway_id = aws_nat_gateway.main.*.id[count.index]
+  }
+
+  route {
+    cidr_block = var.default_vpc_cidr
+    gateway_id = aws_internet_gateway.main.id
   }
 
   tags = {
