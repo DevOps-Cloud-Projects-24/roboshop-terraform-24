@@ -6,5 +6,9 @@ variable "subnet_ids" {}
 variable "vpc_id" {}
 variable "env" {}
 variable "bastion_nodes" {}
-variable "capacity" {}
+variable "asg" {}
+variable "vault_token" {}
+variable "capacity" {
+  default = {}
+}
 # variable "ec2" {}
