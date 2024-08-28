@@ -20,7 +20,7 @@ ec2 = {
     allow_port   =  80
     allow_sg_cidr = ["10.10.0.0/24", "10.10.1.0/24"]
     capacity      = {
-      desired_size = 1
+      desired_capacity = 1
       max          =  1
       min          =  1
     }
