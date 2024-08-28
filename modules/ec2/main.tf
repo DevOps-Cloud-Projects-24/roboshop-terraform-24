@@ -42,3 +42,15 @@ resource "aws_launch_template" "main" {
 
 }
 
+resource "aws_autoscaling_group" "main" {
+  name = "${var.name}-${var.env}-asg"
+  desired_capacity = var.capacity["desired_capacity"]
+  max_size = var.capacity["max"]
+  min_size = var.capacity["min"]
+
+  launch_template {
+    id     = aws_launch_template.main.id
+    version = "$Latest"
+  }
+}
+
