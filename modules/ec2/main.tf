@@ -37,7 +37,7 @@ resource "aws_launch_template" "main" {
   vpc_security_group_ids = [aws_security_group.main.id]
 
   tags = {
-    Name = "${var.name}-${var.env}-sg"
+    Name = "${var.name}-${var.env}-lt"
   }
 
 }
