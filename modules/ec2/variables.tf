@@ -11,4 +11,4 @@ variable "vault_token" {}
 variable "capacity" {
   default = {}
 }
-# variable "ec2" {}
+variable "zone_id" {}
